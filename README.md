@@ -2,528 +2,831 @@
 
 ### Sales, Customer, Campaign & Cancellation Risk Analytics
 
-[![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
-[![Python](https://img.shields.io/badge/Python-Data%20Science-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![SQL](https://img.shields.io/badge/SQL-Analytics-4479A1?logo=mysql&logoColor=white)](#)
-[![Excel](https://img.shields.io/badge/Excel-Business%20Analysis-217346?logo=microsoftexcel&logoColor=white)](https://www.microsoft.com/microsoft-365/excel)
-[![Status](https://img.shields.io/badge/Status-Portfolio%20Project-0A66C2)](#)
+[![Power BI](https://img.shields.io/badge/Power%20BI-Interactive%20Dashboard-F2C811?logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
+[![Python](https://img.shields.io/badge/Python-ETL%20%26%20Machine%20Learning-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![SQL](https://img.shields.io/badge/SQL-Star%20Schema-4479A1?logo=mysql&logoColor=white)](#data-model)
+[![Excel](https://img.shields.io/badge/Excel-Management%20Reporting-217346?logo=microsoftexcel&logoColor=white)](https://www.microsoft.com/microsoft-365/excel)
+[![Status](https://img.shields.io/badge/Status-Completed-2EA44F)](#project-status)
 
-> **Portfolio project:** An end-to-end tourism analytics solution that transforms booking, customer, operational, and campaign data into actionable business intelligence.
+> An end-to-end tourism analytics portfolio project that converts raw booking and market data into a validated analytical model, an interactive Power BI report, a management Excel workbook, and a machine-learning workflow for booking cancellation risk.
+
+---
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Business Problem](#business-problem)
+- [Project Objectives](#project-objectives)
+- [Data Sources and Data Honesty](#data-sources-and-data-honesty)
+- [End-to-End Architecture](#end-to-end-architecture)
+- [1. Data Acquisition](#1-data-acquisition)
+- [2. Data Cleaning and Validation](#2-data-cleaning-and-validation)
+- [3. Feature Engineering](#3-feature-engineering)
+- [4. Data Model](#4-data-model)
+- [5. Business KPIs](#5-business-kpis)
+- [6. Machine Learning](#6-machine-learning)
+- [7. Batch Scoring](#7-batch-scoring)
+- [8. Excel Reporting](#8-excel-reporting)
+- [9. Power BI Dashboard](#9-power-bi-dashboard)
+- [Key Results](#key-results)
+- [Business Recommendations](#business-recommendations)
+- [Data Quality, Privacy, and Limitations](#data-quality-privacy-and-limitations)
+- [Future Improvements](#future-improvements)
+- [References](#references)
 
 ---
 
 ## Project Overview
 
-The *Tourism Intelligence Dashboard* is a Power BI business intelligence solution designed to support data-driven decision-making in the tourism and travel industry.
+The **Tourism Intelligence Dashboard** is a complete data analytics and machine-learning solution designed for tourism, hotel, and travel operations.
 
-The project consolidates multiple analytical areas into a single reporting environment:
+The project combines four analytical areas:
 
-- Sales and revenue performance
-- Booking and cancellation trends
-- Customer behaviour and segmentation
-- Distribution channel performance
-- Campaign and API funnel effectiveness
-- Forward-looking cancellation risk analysis
+1. **Booking and revenue intelligence** — monitors booking volume, realised revenue, ADR, length of stay, and revenue lost to cancellations.
+2. **Customer and channel analysis** — compares customer types, countries, reserved room types, market segments, and distribution channels.
+3. **Campaign funnel analytics** — demonstrates how marketing activity can be measured from message delivery through attributed bookings and ROAS.
+4. **Cancellation risk analytics** — assigns a cancellation probability to each eligible booking so high-risk, high-value cases can be prioritised for follow-up.
 
-The dashboard is designed for management, marketing, sales, and business development teams that need a clear view of business performance, risks, and growth opportunities.
+The final deliverables include:
+
+- A reproducible Python ETL and machine-learning pipeline.
+- A data-quality audit.
+- A Power BI-ready star schema.
+- SQL schema and analytical support files.
+- A trained cancellation-risk model.
+- A batch-scoring script for new bookings.
+- A 10-worksheet Excel management workbook.
+- A four-page interactive Power BI dashboard.
+- Technical and business documentation for GitHub and interviews.
 
 ## Business Problem
 
-Tourism businesses often manage booking, customer, sales, and campaign data across disconnected files and systems. This makes it difficult to:
+Tourism businesses often manage bookings, customers, marketing activity, and operational reports across disconnected systems. This creates several problems:
 
-- Monitor key performance indicators consistently
-- Identify the causes of cancellations and revenue loss
-- Compare customer segments and distribution channels
-- Measure campaign efficiency from delivery to booking
-- Prioritise high-risk bookings for early intervention
-- Convert raw operational data into clear management actions
+- KPI definitions become inconsistent across teams.
+- Cancellation patterns and exposed revenue are difficult to identify early.
+- Customer, market segment, and distribution channel performance cannot be compared efficiently.
+- Campaign reporting stops at opens or clicks instead of measuring bookings and revenue.
+- Management receives historical reports but lacks a forward-looking risk view.
+- Manual spreadsheet work increases refresh time and the chance of errors.
 
-This project addresses these challenges through a structured data model, reusable DAX measures, interactive visualisations, and a machine-learning risk layer.
+This project addresses those problems by creating a single analytical workflow from source data to business action.
 
 ## Project Objectives
 
-1. Build a central tourism analytics data hub.
-2. Clean, validate, and transform raw booking and campaign data.
-3. Create a scalable star-schema data model.
-4. Develop business KPIs using DAX.
-5. Analyse sales, customers, channels, and cancellations.
-6. Evaluate campaign performance across the full conversion funnel.
-7. Estimate booking cancellation risk using machine learning.
-8. Present insights through a professional, interactive Power BI dashboard.
+1. Acquire and document suitable real-world public datasets.
+2. Preserve the raw data as the source of truth.
+3. Clean, validate, and transform booking and market data reproducibly.
+4. Create unique analytical booking identifiers without removing legitimate transactions.
+5. Build a scalable fact-and-dimension data model.
+6. Define reusable revenue, booking, cancellation, customer, and campaign KPIs.
+7. Train and compare multiple cancellation-classification models.
+8. Evaluate the selected model on a later time-based holdout.
+9. Score bookings with cancellation probability and operational risk bands.
+10. Present the results in Excel and Power BI for management use.
 
-## Dashboard Pages
+---
 
-### 1. Executive Overview
+## Data Sources and Data Honesty
 
-Provides management with a high-level view of overall performance.
+This portfolio uses a combination of **real-world public data**, **official public data**, **synthetic campaign data**, and **processed analytical outputs**.
 
-**Key indicators:**
+| Dataset | Type | Rows used | Purpose |
+|---|---:|---:|---|
+| Hotel Booking Demand | Real-world, anonymised public data | 119,390 bookings | Main booking, revenue, customer, and cancellation analysis |
+| Malaysia Monthly Arrivals by State of Entry | Official Malaysian government open data | 92,674 records in the project snapshot | Tourism market context |
+| Campaign/API funnel | Synthetic, generated with random seed `42` | Project-generated | Demonstrates campaign funnel, CAC, and ROAS analytics |
+| Processed fact and dimension tables | Derived data | Generated by the pipeline | SQL, Excel, Power BI, and machine-learning consumption |
 
-- Total Bookings
-- Realised Revenue
-- Average Daily Rate (ADR)
-- Cancellation Rate
-- Average Lead Time
-- Average Length of Stay
-- Revenue and booking trends
+### Hotel Booking Demand
 
-### 2. Sales and Booking Performance
+The main dataset contains **119,390 anonymised bookings** from one resort hotel and one city hotel in Portugal. The arrival dates cover **July 2015 to August 2017**.
 
-Analyses how revenue and bookings change over time and across key business dimensions.
+It is a real-world research dataset, but it is:
 
-**Key analysis:**
+- Not Andalusia company data.
+- Not Malaysian hotel data.
+- Anonymised and intended for research or educational use.
 
-- Monthly booking and revenue trends
-- Hotel or product performance
-- Market segment comparison
-- Distribution channel performance
-- Country or source-market contribution
-- Confirmed versus cancelled bookings
+Main source links:
 
-### 3. Customer and Cancellation Analysis
+- [Hotel Booking Demand research article](https://doi.org/10.1016/j.dib.2018.11.126)
+- [PubMed record](https://pubmed.ncbi.nlm.nih.gov/30581903/)
+- [Kaggle dataset page](https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand)
+- [CSV mirror used for reproducible download](https://raw.githubusercontent.com/aaqibqadeer/Hotel-booking-demand/master/hotel_bookings.csv)
 
-Explores customer behaviour and the operational factors associated with cancellations.
+### Malaysia Monthly Arrivals
 
-**Key analysis:**
+The market-context dataset is published by the Malaysian Government through data.gov.my and contains monthly arrival records by:
 
-- Customer type comparison
-- Lead-time distribution
-- Length-of-stay behaviour
-- Cancellation rate by segment and channel
-- Revenue contribution by customer group
-- High-risk booking characteristics
+- Nationality.
+- State of entry.
+- Sex.
+- Month.
 
-### 4. Campaign and API Funnel
+Source links:
 
-Tracks campaign performance from initial delivery to completed booking.
+- [Malaysia arrivals data catalogue](https://data.gov.my/data-catalogue/arrivals_soe)
+- [Direct CSV source](https://storage.data.gov.my/demography/arrivals_soe.csv)
 
-**Funnel stages:**
+The `state of entry` represents where a visitor entered Malaysia; it does not necessarily represent the visitor's final destination.
+
+This dataset is kept as a separate market-context fact table. It is **not used to train the cancellation model** because its geography, period, and level of aggregation differ from the hotel booking data.
+
+### Synthetic Campaign Data
+
+Internal CRM, WhatsApp, email, SMS, and API-blasting records were not publicly available. Therefore, the campaign funnel was generated synthetically with a fixed random seed for reproducibility.
+
+It demonstrates this funnel:
 
 ```text
-Sent → Delivered → Opened → Clicked → Leads → Bookings
+Sent → Delivered → Opened → Clicks → Leads → Bookings
 ```
 
-**Key campaign KPIs:**
+The synthetic table includes:
 
-- Delivery Rate
-- Open Rate
-- Click-Through Rate (CTR)
-- Campaign Conversion Rate
-- Cost per Lead (CPL)
-- Customer Acquisition Cost (CAC)
-- Campaign Return on Ad Spend (ROAS)
-- Attributed Revenue
+- Campaign month and channel.
+- Messages sent and delivered.
+- Opens and clicks.
+- Leads and attributed bookings.
+- Campaign spend.
+- Attributed revenue.
 
-> **Data notice:** Campaign and API funnel records in this portfolio version are synthetic and are intended to demonstrate the analytical design. They should be replaced with an authorised CRM or campaign-platform export before real business use.
+Every campaign visual must retain the notice:
 
-### 5. Cancellation Risk Analytics
+> **SYNTHETIC PORTFOLIO DATA — REPLACE WITH CRM EXPORT**
 
-Presents the output of a machine-learning model that estimates the likelihood of a booking being cancelled.
+Synthetic results demonstrate analytical design only and must not be presented as actual company performance.
 
-**Key analysis:**
+---
 
-- Risk probability by booking
-- Low-, medium-, and high-risk groups
-- Risk distribution by segment and channel
-- Important predictive factors
-- Potential revenue exposed to cancellation risk
-- Suggested intervention priorities
-
-> To reduce data leakage and better represent future performance, the model should be evaluated using a later time-based holdout rather than a random split.
-
-## Data Workflow
+## End-to-End Architecture
 
 ```mermaid
-flowchart LR
-    A["Raw booking and campaign data"] --> B["Data cleaning and validation"]
-    B --> C["Feature engineering and transformation"]
-    C --> D["Star-schema data model"]
-    D --> E["DAX measures and business KPIs"]
-    C --> F["Cancellation risk model"]
-    E --> G["Power BI dashboard"]
-    F --> G
-    G --> H["Business insights and actions"]
+flowchart TD
+    A["Public raw data"] --> B["Python ETL"]
+    B --> C["Quality validation"]
+    C --> D["Fact and dimension tables"]
+    D --> E["Excel reporting"]
+    D --> F["Power BI model"]
+    C --> G["ML preprocessing"]
+    G --> H["Model training and tuning"]
+    H --> I["Time-based holdout"]
+    I --> J["Saved model and batch scoring"]
+    J --> F
 ```
 
-## Data Model
+The workflow follows these stages:
 
-The Power BI model follows a **star-schema design** to improve usability, performance, and measure consistency.
+1. **Extract** raw booking and market data.
+2. **Transform** missing values, dates, categories, and analytical fields.
+3. **Validate** row counts, identifiers, numeric ranges, and known data-quality issues.
+4. **Model** the data as facts, dimensions, measures, and prediction outputs.
+5. **Train** and compare cancellation-classification models.
+6. **Score** eligible bookings with probabilities and risk bands.
+7. **Report** historical performance and forward-looking risk through Excel and Power BI.
+
+---
+
+## 1. Data Acquisition
+
+The raw source files are downloaded and stored without overwriting their original values.
+
+```text
+data/raw/hotel_bookings.csv
+data/raw/arrivals_soe.csv
+```
+
+Keeping raw data separate from processed data provides:
+
+- Reproducibility.
+- Auditability.
+- A stable source of truth.
+- The ability to rerun the entire pipeline after code changes.
+
+The booking source does not contain a reliable unique booking identifier. The ETL pipeline therefore creates a deterministic analytical `booking_id` instead of assuming that identical-looking rows are duplicates.
+
+## 2. Data Cleaning and Validation
+
+The main pipeline is:
+
+```text
+src/run_pipeline.py
+```
+
+It performs extraction, cleaning, feature engineering, validation, model preparation, and output generation.
+
+### Core Cleaning Rules
+
+- Fill missing `children` values with `0`.
+- Replace missing country codes with `UNK`.
+- Construct a valid arrival date from arrival year, month, and day.
+- Standardise text and categorical fields.
+- Clip negative ADR values to `0` for analytical revenue calculations.
+- Flag bookings with zero total guests.
+- Validate cancellation flags and numeric ranges.
+- Preserve all 119,390 source records.
+
+### Duplicate Handling
+
+Duplicate-looking rows are audited but are not removed automatically.
+
+The source does not include an original booking ID, so two identical rows may still represent two separate bookings. A blind `drop_duplicates()` operation could therefore understate:
+
+- Total bookings.
+- Revenue.
+- Cancellation volume.
+- Customer and channel contribution.
+
+The pipeline creates a new `booking_id`, records duplicate-like patterns in the quality report, and excludes only records that fail defined model-eligibility rules.
+
+### Data-Quality Output
+
+```text
+data/quality/data_quality_report.csv
+```
+
+The report tracks issues such as:
+
+- Missing country.
+- Missing number of children.
+- Negative ADR.
+- Zero-guest bookings.
+- Invalid dates.
+- Duplicate-looking records.
+- Records excluded from machine-learning training.
+
+Final checks confirm:
+
+- 119,390 booking records are retained.
+- Every generated booking ID is unique.
+- Prediction probabilities remain between `0` and `1`.
+- Excel formulas contain no calculation errors.
+- Core KPI totals reconcile across generated outputs.
+
+## 3. Feature Engineering
+
+The pipeline creates business-ready fields from the raw booking variables.
+
+### Stay and Guest Features
+
+```python
+total_nights = stays_in_weekend_nights + stays_in_week_nights
+total_guests = adults + children + babies
+```
+
+### Analytical Revenue Features
+
+```python
+gross_booking_value = adr_clean * total_nights
+realized_revenue = gross_booking_value if is_canceled == 0 else 0
+revenue_lost_to_cancellation = gross_booking_value if is_canceled == 1 else 0
+```
+
+These are analytical estimates for portfolio reporting. They are not audited accounting revenue because the public dataset does not contain payments, refunds, taxes, discounts, commissions, or final invoices.
+
+### Date and Business Features
+
+Additional fields include:
+
+- Arrival date.
+- Date key.
+- Arrival year and month.
+- Length-of-stay grouping.
+- Guest count.
+- Booking status grouping.
+- Revenue outcome.
+- Model eligibility.
+- Cancellation probability.
+- Prediction class.
+- Risk band.
+
+## 4. Data Model
+
+The Power BI model contains **10 logical tables**:
 
 | Table | Type | Purpose |
 |---|---|---|
-| `fact_bookings` | Fact | Booking, guest, stay, cancellation, and revenue-level records |
-| `fact_campaigns` | Fact | Campaign spend, delivery, engagement, leads, and attributed bookings |
-| `dim_date` | Dimension | Date, month, quarter, year, week, and calendar attributes |
-| `dim_hotel` | Dimension | Hotel or tourism product information |
-| `dim_channel` | Dimension | Booking and distribution channels |
-| `dim_segment` | Dimension | Customer or market segments |
-| `_Measures` | Measures | Centralised DAX measures used throughout the report |
+| `fact_bookings` | Fact | Booking, guest, stay, cancellation, ADR, and revenue-level records |
+| `fact_market_arrivals` | Fact | Malaysian monthly arrivals for external market context |
+| `fact_campaign_funnel_synthetic` | Fact | Synthetic campaign delivery, engagement, spend, bookings, and revenue |
+| `cancellation_predictions_holdout` | Prediction output | Booking-level holdout probabilities, prediction classes, and risk bands |
+| `data_quality_report` | Audit | Quality rules, issue counts, and validation results |
+| `dim_date` | Dimension | Date, month, quarter, year, week, and calendar fields |
+| `dim_hotel` | Dimension | Hotel category |
+| `dim_channel` | Dimension | Booking distribution channel |
+| `dim_segment` | Dimension | Booking market segment |
+| `_Measures` | Measure table | Central location for reusable DAX measures |
 
-## Example KPI Definitions
+The core booking model follows a star schema:
+
+```mermaid
+flowchart TD
+    D["dim_date"] --> F["fact_bookings"]
+    H["dim_hotel"] --> F
+    C["dim_channel"] --> F
+    S["dim_segment"] --> F
+    F --> P["cancellation predictions"]
+```
+
+Key modelling principles:
+
+- Dimension-to-fact relationships use one-to-many filtering.
+- Surrogate keys are used for reusable dimensions.
+- Measures are stored in `_Measures`.
+- Prediction results are connected at booking level.
+- Market arrivals, campaign data, and quality audits remain separate analytical subjects unless a valid shared dimension exists.
+- Fact-to-fact many-to-many relationships are avoided.
+
+## 5. Business KPIs
+
+### Booking and Revenue Measures
 
 | KPI | Definition |
 |---|---|
 | Total Bookings | Count of booking records |
-| Realised Revenue | Revenue from non-cancelled or completed bookings |
+| Cancelled Bookings | Bookings where `is_canceled = 1` |
+| Stayed Bookings | Bookings where `is_canceled = 0` |
 | Cancellation Rate | Cancelled bookings divided by total bookings |
-| Average Lead Time | Average number of days between booking and arrival |
-| Average Stay | Average number of nights per booking |
-| ADR | Realised room revenue divided by occupied room nights |
+| Gross Booking Value | ADR multiplied by total nights |
+| Realised Revenue | Gross booking value from non-cancelled bookings |
+| Revenue Lost to Cancellation | Gross booking value associated with cancelled bookings |
+| Average ADR | Average cleaned daily rate |
+| Average Lead Time | Average days between booking and arrival |
+| Average Stay | Average total nights per booking |
+
+### Campaign Measures
+
+| KPI | Definition |
+|---|---|
 | Delivery Rate | Delivered messages divided by messages sent |
 | Open Rate | Opened messages divided by delivered messages |
-| CTR | Clicks divided by delivered messages |
+| Click-Through Rate | Clicks divided by delivered messages |
 | Campaign Conversion Rate | Attributed bookings divided by delivered messages |
-| CPL | Campaign spend divided by leads generated |
-| CAC | Campaign spend divided by attributed customers or bookings |
+| Cost per Lead | Campaign spend divided by leads |
+| Customer Acquisition Cost | Campaign spend divided by attributed bookings |
 | Campaign ROAS | Attributed revenue divided by campaign spend |
 
-## Machine Learning — Booking Cancellation Prediction
+Example DAX:
+
+```DAX
+Total Bookings =
+COUNTROWS('fact_bookings')
+```
+
+```DAX
+Cancellation Rate =
+DIVIDE([Cancelled Bookings], [Total Bookings])
+```
+
+```DAX
+Campaign ROAS =
+DIVIDE([Attributed Revenue (MYR)], [Campaign Spend (MYR)])
+```
+
+Rates are formatted as percentages, campaign ROAS as `0.0x`, booking values as EUR, and campaign values as MYR.
+
+---
+
+## 6. Machine Learning
 
 ### Problem Definition
 
-The machine-learning component predicts the probability that a customer will cancel a booking. The problem is formulated as a **supervised binary-classification task**:
+The machine-learning task predicts:
 
-* `0` — Booking not cancelled
-* `1` — Booking cancelled
+> Based only on information available at or near booking time, how likely is this booking to be cancelled?
 
-The predicted cancellation probability allows the business to identify high-risk bookings and take proactive action before potential revenue is lost.
+Target:
+
+```text
+is_canceled
+
+0 = booking not cancelled
+1 = booking cancelled
+```
+
+This is a supervised binary-classification problem.
 
 ### Input Features
 
-The model uses booking, customer, behavioural, and pricing variables, including:
+The model uses booking-time variables such as:
 
-* Lead time
-* Booking month
-* Length of stay
-* Number of guests
-* Customer type
-* Market segment
-* Distribution channel
-* Previous cancellations
-* Deposit type
-* Number of special requests
-* Average daily rate (ADR)
+- Hotel.
+- Lead time.
+- Arrival month.
+- Total nights.
+- Total guests.
+- Country.
+- Market segment.
+- Distribution channel.
+- Previous cancellations.
+- Deposit type.
+- Customer type.
+- ADR.
+- Special requests.
+- Required parking spaces.
 
-These features help the model identify patterns associated with booking cancellation behaviour.
+### Leakage Prevention
 
-### Models Evaluated
+Fields that reveal or are strongly influenced by the final outcome are excluded from training, including:
 
-Three classification algorithms were evaluated:
+- `reservation_status`.
+- `reservation_status_date`.
+- `assigned_room_type`.
+- `booking_changes`.
+- `days_in_waiting_list`.
 
-| Model                       | Role                                           |
-| --------------------------- | ---------------------------------------------- |
-| Logistic Regression         | Interpretable baseline model                   |
-| Random Forest               | Non-linear bagging ensemble                    |
-| Histogram Gradient Boosting | Boosting model for complex non-linear patterns |
+For example, using `reservation_status = Canceled` would directly expose the target and produce misleadingly high model performance.
 
-The hyperparameters evaluated included:
+### Preprocessing
 
-* **Histogram Gradient Boosting:** learning rate, maximum leaf nodes, and L2 regularisation.
-* **Random Forest:** number of trees, maximum depth, and minimum samples per leaf.
-* **Logistic Regression:** regularisation strength (`C`) with balanced class weights.
+The preprocessing workflow includes:
 
-### Evaluation Strategy
+- Median imputation for missing numeric values.
+- Categorical imputation where required.
+- One-hot encoding for Logistic Regression.
+- Encoded categorical inputs for tree-based models.
+- Consistent preprocessing packaged with the trained estimator.
 
-The model-development process used two evaluation stages:
+### Time-Based Split
 
-1. **Validation set** — used to compare algorithms, tune hyperparameters, and select classification thresholds.
-2. **Holdout test set** — used for the final evaluation on unseen data.
+The data is ordered chronologically instead of being split randomly:
 
-The threshold selected during validation was applied unchanged to the holdout test set. This prevents the test set from influencing model selection and provides a more realistic estimate of generalisation performance.
+```text
+Earlier bookings → Training
+Following period → Validation
+Latest bookings  → Holdout test
+```
 
-### Evaluation Metrics
+The final holdout contains the latest booking period, approximately **22 May to 31 August 2017**.
 
-The models were evaluated using:
+This provides a more realistic test: the model learns from historical bookings and is evaluated on later, unseen booking behaviour.
 
-| Metric           | Description                                                        | Preferred Direction |
-| ---------------- | ------------------------------------------------------------------ | ------------------- |
-| ROC-AUC          | Ability to distinguish cancelled and non-cancelled bookings        | Higher              |
-| PR-AUC           | Precision-recall performance for the cancelled class               | Higher              |
-| Accuracy         | Overall percentage of correctly classified bookings                | Higher              |
-| Precision        | Percentage of high-risk predictions that were actual cancellations | Higher              |
-| Recall           | Percentage of actual cancellations correctly identified            | Higher              |
-| F1-score         | Balance between precision and recall                               | Higher              |
-| Brier score      | Accuracy and calibration of predicted probabilities                | Lower               |
-| Confusion matrix | Distribution of true and false predictions                         | Context-dependent   |
+The validation data is used to:
 
-Recall is particularly important because missed high-risk bookings may lead to preventable revenue loss. However, precision must also be considered because low precision can result in unnecessary customer interventions.
+- Compare model families.
+- Tune hyperparameters.
+- Select the classification threshold.
 
----
+The holdout data is used once for final evaluation. Its threshold is not retuned on the test set.
+
+### Models Compared
+
+| Model | Role |
+|---|---|
+| Logistic Regression | Interpretable linear baseline |
+| Random Forest | Non-linear bagging ensemble |
+| Histogram Gradient Boosting | Sequential boosting model for complex interactions |
 
 ### Hyperparameter-Tuning Results
 
-The following results were obtained from the validation dataset:
+Validation results:
 
-| Model Variant                    |    ROC-AUC |     PR-AUC |   Accuracy |  Precision |     Recall |   F1-score |      Brier | Threshold |
-| -------------------------------- | ---------: | ---------: | ---------: | ---------: | ---------: | ---------: | ---------: | --------: |
-| **HGB — leaves=15, LR=0.10**     | **0.8971** | **0.8624** | **81.33%** | **75.02%** |     78.65% |     76.79% | **0.1308** |     0.290 |
-| HGB — leaves=31, LR=0.08         |     0.8963 |     0.8621 |     80.94% |     73.46% |     80.55% | **76.84%** |     0.1315 |     0.273 |
-| HGB — leaves=63, LR=0.05         |     0.8943 |     0.8610 |     80.33% |     72.32% | **80.85%** |     76.34% |     0.1319 |     0.279 |
-| Random Forest — depth=12, leaf=5 |     0.8882 |     0.8516 |     80.03% |     73.04% |     77.90% |     75.39% |     0.1322 |     0.392 |
-| Random Forest — depth=18, leaf=3 |     0.8855 |     0.8483 |     79.98% |     72.69% |     78.54% |     75.50% |     0.1333 |     0.364 |
-| Logistic Regression — C=0.2      |     0.8756 |     0.8410 |     79.14% |     72.21% |     76.20% |     74.15% |     0.1380 |     0.440 |
-| Logistic Regression — C=1.0      |     0.8752 |     0.8405 |     78.72% |     71.11% |     77.17% |     74.01% |     0.1384 |     0.431 |
+| Model Variant | ROC-AUC | PR-AUC | Accuracy | Precision | Recall | F1 | Brier | Threshold |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| **HGB — leaves=15, LR=0.10** | **0.8971** | **0.8624** | **81.33%** | **75.02%** | 78.65% | 76.79% | **0.1308** | 0.290 |
+| HGB — leaves=31, LR=0.08 | 0.8963 | 0.8621 | 80.94% | 73.46% | 80.55% | **76.84%** | 0.1315 | 0.273 |
+| HGB — leaves=63, LR=0.05 | 0.8943 | 0.8610 | 80.33% | 72.32% | **80.85%** | 76.34% | 0.1319 | 0.279 |
+| Random Forest — depth=12, leaf=5 | 0.8882 | 0.8516 | 80.03% | 73.04% | 77.90% | 75.39% | 0.1322 | 0.392 |
+| Random Forest — depth=18, leaf=3 | 0.8855 | 0.8483 | 79.98% | 72.69% | 78.54% | 75.50% | 0.1333 | 0.364 |
+| Logistic Regression — C=0.2 | 0.8756 | 0.8410 | 79.14% | 72.21% | 76.20% | 74.15% | 0.1380 | 0.440 |
+| Logistic Regression — C=1.0 | 0.8752 | 0.8405 | 78.72% | 71.11% | 77.17% | 74.01% | 0.1384 | 0.431 |
 
-### Tuning Interpretation
+The 15-leaf Histogram Gradient Boosting model was selected because it produced the best overall combination of:
 
-The Histogram Gradient Boosting variants achieved the strongest validation performance.
-
-The configuration with 31 leaf nodes produced the highest validation F1-score of **76.84%**, while the 63-leaf configuration achieved the highest recall of **80.85%**. However, these more complex configurations had slightly lower accuracy, precision, ROC-AUC, and probability calibration.
-
-The 15-leaf configuration was selected because it provided:
-
-* The highest ROC-AUC
-* The highest PR-AUC
-* The highest accuracy
-* The highest precision
-* The lowest Brier score
-* Competitive recall and F1-score
-* Lower model complexity
-
----
+- ROC-AUC.
+- PR-AUC.
+- Accuracy.
+- Precision.
+- Probability calibration.
+- Competitive recall and F1.
+- Lower complexity than the larger HGB variants.
 
 ### Holdout Test Results
 
-Only the selected configuration from each model family was evaluated on the unseen holdout test set.
+Only the selected configuration from each model family was evaluated on the unseen holdout.
 
-| Model                           |    ROC-AUC |     PR-AUC |   Accuracy |  Precision |     Recall |   F1-score |      Brier | Threshold |
-| ------------------------------- | ---------: | ---------: | ---------: | ---------: | ---------: | ---------: | ---------: | --------: |
-| **Histogram Gradient Boosting** | **0.8473** | **0.7908** | **75.89%** | **68.95%** |     70.76% |     69.84% |     0.1614 |     0.290 |
-| Random Forest                   |     0.8390 |     0.7802 |     74.50% |     66.02% |     72.87% |     69.28% | **0.1585** |     0.392 |
-| Logistic Regression             |     0.8378 |     0.7904 |     71.52% |     59.86% | **84.42%** | **70.05%** |     0.1706 |     0.440 |
-
-### Holdout Interpretation
-
-The Histogram Gradient Boosting model remained the strongest model for overall discrimination and balanced performance on unseen data.
-
-It achieved:
-
-* The highest ROC-AUC at **0.8473**
-* The highest PR-AUC at **0.7908**
-* The highest accuracy at **75.89%**
-* The highest precision at **68.95%**
-* A recall of **70.76%**
-* An F1-score of **69.84%**
-
-This means that the model identified approximately **70.76% of actual cancellations**. Among the bookings flagged as high-risk, approximately **68.95% were genuine cancellations**.
-
-The Logistic Regression model achieved the highest recall of **84.42%** and a marginally higher F1-score of **70.05%**. However, its precision was only **59.86%**, meaning it generated substantially more false-positive alerts.
-
-Random Forest achieved the lowest holdout Brier score of **0.1585**, indicating slightly better probability calibration. However, its discrimination, accuracy, precision, and F1-score were lower than the selected Histogram Gradient Boosting model.
-
----
-
-### Validation vs Holdout Performance
-
-The following table shows how the selected Histogram Gradient Boosting model performed across both datasets:
-
-| Metric      | Validation | Holdout Test |   Change |
-| ----------- | ---------: | -----------: | -------: |
-| ROC-AUC     |     0.8971 |       0.8473 |  −0.0498 |
-| PR-AUC      |     0.8624 |       0.7908 |  −0.0715 |
-| Accuracy    |     81.33% |       75.89% | −5.44 pp |
-| Precision   |     75.02% |       68.95% | −6.07 pp |
-| Recall      |     78.65% |       70.76% | −7.89 pp |
-| F1-score    |     76.79% |       69.84% | −6.95 pp |
-| Brier score |     0.1308 |       0.1614 |  +0.0306 |
-
-The reduction in holdout performance indicates a generalisation gap between the validation and unseen datasets. This is expected when the holdout data contains booking patterns that differ from the development data.
-
-Despite this decline, the model maintained a ROC-AUC above **0.84**, indicating that it still provides useful predictive separation on unseen bookings.
-
----
+| Model | ROC-AUC | PR-AUC | Accuracy | Precision | Recall | F1 | Brier | Threshold |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| **Histogram Gradient Boosting** | **0.8473** | **0.7908** | **75.89%** | **68.95%** | 70.76% | 69.84% | 0.1614 | 0.290 |
+| Random Forest | 0.8390 | 0.7802 | 74.50% | 66.02% | 72.87% | 69.28% | **0.1585** | 0.392 |
+| Logistic Regression | 0.8378 | 0.7904 | 71.52% | 59.86% | **84.42%** | **70.05%** | 0.1706 | 0.440 |
 
 ### Final Model
 
-The selected production candidate is:
-
 ```text
-Model: Histogram Gradient Boosting
-Learning rate: 0.10
-Maximum leaf nodes: 15
-L2 regularisation: 1.0
-Classification threshold: 0.290
+Model                   Histogram Gradient Boosting
+Learning rate           0.10
+Maximum leaf nodes      15
+L2 regularisation       1.0
+Classification threshold 0.290
+Holdout ROC-AUC         0.8473
+Holdout PR-AUC          0.7908
+Holdout precision       68.95%
+Holdout recall          70.76%
+Holdout F1-score        69.84%
 ```
 
-The final model was selected because it provided the best overall balance between:
+Interpretation:
 
-* Cancellation-risk discrimination
-* Prediction accuracy
-* Precision and false-alert control
-* Recall of cancelled bookings
-* Probability calibration
-* Model complexity
+- The model detected approximately **70.76% of actual cancellations**.
+- Approximately **68.95% of bookings flagged by the selected threshold were genuine cancellations**.
+- ROC-AUC of **0.8473** indicates useful ranking ability on later unseen data.
+- The decline from validation to holdout reflects a realistic generalisation gap and reinforces the need for monitoring.
 
-### Classification Threshold
+Logistic Regression achieved higher recall, but its lower precision would generate considerably more false alerts. The selected HGB model provides a more practical balance for operational follow-up.
 
-The final classification threshold was set at **0.290**.
+### Classification Threshold and Risk Bands
+
+The operational decision threshold is:
 
 ```text
-Cancellation probability < 0.290  → Lower-risk booking
-Cancellation probability ≥ 0.290 → High-risk booking
+Probability < 0.290  → predicted not cancelled
+Probability ≥ 0.290 → predicted cancellation
 ```
 
-The threshold is lower than the default value of 0.50 because detecting potential cancellations is important for preventing revenue loss.
+The dashboard can additionally group probabilities into business-friendly bands:
 
-However, reducing the threshold further would increase recall while potentially lowering precision and generating more false alerts. Therefore, the final threshold should reflect the relative cost of:
+```text
+Low risk     0% to <30%
+Medium risk  30% to <60%
+High risk    60% to 100%
+```
 
-* Contacting customers who would not have cancelled
-* Missing genuine high-risk bookings
-* Offering unnecessary discounts or incentives
-* Losing revenue through preventable cancellations
+The model threshold and the dashboard risk bands serve different purposes:
 
-### Business Application
+- The **threshold** converts probability into a binary prediction.
+- The **risk band** supports prioritisation and reporting.
 
-High-risk predictions can support proactive retention strategies such as:
+The model should support human follow-up. It should not automatically cancel a booking, reject a customer, or impose a penalty.
 
-* Sending booking confirmation reminders
-* Sending payment or deposit reminders
-* Conducting confirmation calls
-* Offering flexible date changes
-* Requesting earlier final payments
-* Providing targeted retention offers
-* Prioritising high-value bookings for manual follow-up
+## 7. Batch Scoring
 
-### Model Monitoring
+The trained preprocessing and model pipeline is saved as:
 
-Before full production deployment, the model should be monitored for:
+```text
+models/cancellation_risk_model.joblib
+```
 
-* Changes in cancellation behaviour
-* Declining precision or recall
-* Probability-calibration drift
-* Changes in customer or market segments
-* Differences between training and future booking data
-* The financial impact of false positives and false negatives
+New booking files can be scored without retraining:
 
-The model should be retrained periodically when new booking and cancellation data becomes available.
+```bash
+python src/score_new_bookings.py \
+  --input new_bookings.csv \
+  --output scored_bookings.csv
+```
 
+Expected output fields include:
 
-## Technology Stack
+```text
+booking_id
+cancellation_probability
+predicted_is_canceled
+risk_band
+model_name
+decision_threshold
+```
 
-| Technology | Usage |
+Batch scoring was tested across all 119,390 project bookings, with probability values validated between `0` and `1`.
+
+In a production setting, this process could run daily and send high-value, high-risk bookings to a CRM follow-up queue.
+
+## 8. Excel Reporting
+
+The management workbook is:
+
+```text
+excel/Tourism_Intelligence_Analysis.xlsx
+```
+
+It contains 10 worksheets covering:
+
+- Executive KPIs.
+- Booking and revenue trends.
+- Customer analysis.
+- Channel and segment analysis.
+- Campaign funnel performance.
+- Cancellation-risk results.
+- Model comparison.
+- Data-quality checks.
+- Supporting analytical tables.
+
+The workbook provides:
+
+- Formula-driven KPIs.
+- Filterable tables.
+- Management charts.
+- Transparent calculations.
+- A lightweight reporting option for users without Power BI.
+
+The final workbook was checked for formula errors, data consistency, and visual readability.
+
+---
+
+## 9. Power BI Dashboard
+
+The current report file is:
+
+```text
+dashboard/Andalusia_Tourism.pbix
+```
+
+Report title:
+
+> **Tourism Intelligence Dashboard**
+
+Subtitle:
+
+> **Sales, Customer, Campaign & Cancellation Risk Analytics**
+
+The current PBIX contains **four report pages** and **10 model tables**.
+
+### Page 1 — Executive Overview
+
+Purpose: provide management with an immediate view of booking, revenue, and cancellation performance.
+
+| Visual | Fields or measures |
 |---|---|
-| Power BI | Data modelling, DAX, interactive dashboard, and business reporting |
-| Power Query | Data extraction, transformation, validation, and loading |
-| Python | Data cleaning, exploratory analysis, feature engineering, and machine learning |
-| SQL | Relational schema design and analytical queries |
-| Excel | Data inspection, business validation, and supporting analysis |
-| Git/GitHub | Version control, documentation, and portfolio presentation |
+| Multi-row KPI card | Total Bookings, Cancellation Rate, Realised Revenue, Revenue Lost, Average ADR, Stayed Bookings |
+| Line chart | Total Bookings by arrival year and month |
+| Line chart | Realised Revenue by arrival year and month |
+| Clustered bar chart | Cancellation Rate by Distribution Channel |
+| Clustered bar chart | Realised Revenue by Market Segment |
+| Slicers | Campaign Month, Hotel, Distribution Channel, Market Segment |
 
-## Repository Structure
+Management questions answered:
 
-```text
-andalusia-tourism-intelligence/
-│
-├── README.md
-├── dashboard/
-│   └── Andalusia_Tourism_Intelligence_Dashboard.pbix
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── README.md
-├── notebooks/
-│   ├── 01_data_cleaning.ipynb
-│   ├── 02_exploratory_analysis.ipynb
-│   └── 03_cancellation_model.ipynb
-├── sql/
-│   ├── schema.sql
-│   └── analytics_queries.sql
-├── dax/
-│   └── measures.dax
-├── reports/
-│   └── project_report.pdf
-├── images/
-│   ├── executive_overview.png
-│   ├── customer_analysis.png
-│   ├── campaign_funnel.png
-│   └── cancellation_risk.png
-└── requirements.txt
-```
+- How many bookings were received?
+- How much analytical revenue was realised?
+- How much booking value was exposed through cancellations?
+- Which channels have higher cancellation rates?
+- Which market segments contribute the most realised revenue?
 
-> The structure above is the recommended final repository layout. Remove any file or folder that is not included in your published project.
+### Page 2 — Customer & Booking Analysis
 
-## How to Use This Project
+Purpose: explain customer behaviour and compare the commercial value of booking groups.
 
-### Power BI dashboard
+| Visual | Fields or measures |
+|---|---|
+| Matrix | Customer Type with Total Bookings, Average Lead Time, Average Stay, Cancellation Rate, and Realised Revenue |
+| Clustered bar chart | Total Bookings by Country |
+| Clustered column chart | Realised ADR by Reserved Room Type |
+| Scatter chart | Average Lead Time, Total Bookings, and Cancellation Rate by Market Segment |
+| Slicers | Campaign Month, Hotel, Distribution Channel, Market Segment |
 
-1. Download or clone this repository.
-2. Open `dashboard/Andalusia_Tourism_Intelligence_Dashboard.pbix` using Power BI Desktop.
-3. Update the data-source paths in **Transform Data → Data source settings**.
-4. Refresh the model.
-5. Review relationships, calculated columns, and measures before publishing.
+Management questions answered:
 
-### Python analysis
+- Which customer types generate the most bookings and revenue?
+- Which source countries contribute the most booking volume?
+- How does ADR vary by reserved room type?
+- Which segments combine long lead times, high booking volume, and high cancellation rates?
 
-```bash
-git clone https://github.com/YOUR-USERNAME/andalusia-tourism-intelligence.git
-cd andalusia-tourism-intelligence
-python -m venv .venv
-```
+### Page 3 — Cancellation Risk Monitor
 
-Activate the virtual environment, then install the dependencies:
+Purpose: convert model output into an operational retention queue.
 
-```bash
-pip install -r requirements.txt
-```
+| Visual | Fields or measures |
+|---|---|
+| Multi-row KPI card | Scored Bookings, High-Risk Bookings, High-Risk Share, Average Cancellation Probability, High-Risk Booking Value |
+| Column chart | Booking count by Risk Band |
+| Detail table | Booking ID, Arrival Year, Country, Gross Booking Value, and Segment |
+| Slicers | Campaign Month, Hotel, Distribution Channel, Market Segment |
+| Evaluation note | Model evaluated on a later time-based holdout |
 
-Run the notebooks in numerical order:
+Management questions answered:
 
-```text
-01_data_cleaning.ipynb
-02_exploratory_analysis.ipynb
-03_cancellation_model.ipynb
-```
+- How many bookings have been scored?
+- What share is classified as high risk?
+- How much booking value is exposed in the high-risk group?
+- Which bookings should receive confirmation or retention follow-up first?
 
-## Dashboard Preview
+The page is designed for prioritisation, not automatic enforcement.
 
-Add exported dashboard screenshots to the `images/` folder, then enable the links below.
+### Page 4 — Campaign Funnel & ROAS
 
-<!--
-![Executive Overview](images/executive_overview.png)
-![Customer Analysis](images/customer_analysis.png)
-![Campaign Funnel](images/campaign_funnel.png)
-![Cancellation Risk](images/cancellation_risk.png)
--->
+Purpose: show marketing efficiency from message delivery to attributed revenue.
 
-## Key Business Insights
+| Visual | Fields or measures |
+|---|---|
+| Data notice banner | Synthetic portfolio data — replace with CRM export |
+| Funnel | Sent → Delivered → Opened → Clicks → Leads → Bookings |
+| Multi-row KPI card | Delivery Rate, Open Rate, Click-Through Rate, Campaign Conversion Rate, Cost per Lead, Customer Acquisition Cost, Campaign ROAS |
+| Clustered bar chart | Campaign ROAS by Channel |
+| Line chart | Attributed Revenue and Campaign Spend by Campaign Month |
+| Slicers | Campaign Month and Channel |
 
-Replace the statements below with results verified from the final dashboard:
+Management questions answered:
 
-- **Revenue:** `[Insert the strongest verified revenue trend.]`
-- **Cancellations:** `[Insert the segment, channel, or period with the highest cancellation risk.]`
-- **Customers:** `[Insert the most valuable customer group and supporting metric.]`
-- **Campaigns:** `[Insert the best-performing channel based on ROAS or conversion rate.]`
-- **Risk:** `[Insert the model result and the operational action it supports.]`
+- Where does the campaign funnel lose the most users?
+- Which channel generates the strongest simulated ROAS?
+- Is attributed revenue growing faster than campaign spend?
+- Which metrics should be replaced when real CRM data becomes available?
 
-## Recommended Business Actions
+### Power BI Interaction and Formatting
 
-The dashboard is intended to support actions such as:
+- Shared slicers support page-level filtering.
+- DAX measures recalculate automatically under filter context.
+- Visual headers and excess gridlines are minimised for a clean management layout.
+- Booking and revenue trends use a year-month date hierarchy.
+- Rates use percentage formatting.
+- Hotel booking values use EUR.
+- Synthetic campaign spend and revenue use MYR.
+- ROAS uses `0.0x` formatting.
+- The campaign page includes a prominent synthetic-data disclosure.
+- The risk page includes a time-based-holdout disclosure.
+  
+---
 
-1. Prioritising retention outreach for high-value, high-risk bookings.
-2. Adjusting deposit or confirmation policies for segments with persistent cancellation risk.
-3. Redirecting campaign budget toward channels with stronger conversion and ROAS.
-4. Creating targeted offers for valuable customer segments and low-demand periods.
-5. Monitoring booking lead time and cancellation trends through scheduled data refreshes.
+## Key Results
+
+### Data and Reporting
+
+- **119,390** booking records retained.
+- **92,674** Malaysian arrival records included in the project snapshot.
+- **119,390** unique analytical booking IDs.
+- Approximately **37%** of source bookings were cancelled.
+- Approximately **€16.73 million** in analytical realised revenue is reported in the current project output.
+- Four interactive Power BI pages completed.
+- Ten Power BI model tables included.
+- Ten Excel worksheets completed.
+- Synthetic campaign data clearly separated from real-world data.
+
+### Machine Learning
+
+- Best model: **Histogram Gradient Boosting**.
+- Holdout ROC-AUC: **0.8473**.
+- Holdout PR-AUC: **0.7908**.
+- Holdout precision: **68.95%**.
+- Holdout recall: **70.76%**.
+- Holdout F1-score: **69.84%**.
+- Selected threshold: **0.290**.
+
+These results show that the model provides useful prioritisation on unseen later bookings, but it is not perfect and requires operational monitoring.
+
+## Business Recommendations
+
+1. **Prioritise high-value, high-risk bookings** for confirmation calls, reminders, or flexible rescheduling support.
+2. **Review channel-specific cancellation policies** where cancellation rate and exposed booking value remain persistently high.
+3. **Create targeted retention journeys** based on lead time, customer type, deposit type, and previous cancellation behaviour.
+4. **Monitor false-positive cost** before offering discounts or incentives to every high-risk booking.
+5. **Replace synthetic campaign records with CRM exports** and measure each channel from delivery through attributed revenue.
+6. **Redirect campaign budget using conversion and ROAS**, not opens and clicks alone.
+7. **Schedule data-quality checks and report refreshes** so management decisions use current, validated data.
+8. **Retrain and recalibrate the model periodically** when new booking behaviour becomes available.
+
+---
 
 ## Data Quality, Privacy, and Limitations
 
-- This repository is intended for educational and portfolio use.
-- Synthetic campaign records must not be interpreted as actual company performance.
-- Do not publish confidential, personally identifiable, or commercially sensitive customer data.
-- Model predictions indicate statistical risk and should support—not replace—business judgement.
-- Results may change when the dataset, feature definitions, model threshold, or evaluation period changes.
-- All insights and figures should be validated against the final refreshed Power BI model before publication.
+- This is an educational portfolio project, not a production system.
+- The hotel data represents anonymised Portuguese hotel bookings, not Andalusia or Malaysian company transactions.
+- Malaysian arrival data provides external context and is not joined directly into the booking cancellation model.
+- Campaign records are synthetic and do not represent real marketing performance.
+- Analytical revenue is estimated from cleaned ADR and total nights; it is not accounting revenue.
+- Duplicate-looking source rows are retained because the original dataset lacks a reliable booking ID.
+- The holdout period contains later booking behaviour, so performance is lower and more realistic than validation performance.
+- Model probabilities may drift when customer behaviour, channels, pricing, or cancellation policies change.
+- Predictions should support human decisions and should not be used to automatically penalise customers.
+- No personally identifiable customer information should be added to a public repository.
+- Public-data licences and attribution requirements must be reviewed before redistributing source data.
 
 ## Future Improvements
 
-- Connect the model to an automated CRM or API data pipeline.
-- Add incremental refresh and scheduled data-quality checks.
-- Deploy cancellation scoring through a prediction API.
-- Add revenue forecasting and customer lifetime value analysis.
-- Implement row-level security for management and department views.
-- Monitor model drift and prediction performance over time.
+- Replace synthetic campaign data with authorised CRM or campaign-platform exports.
+- Add API ingestion, scheduled ETL, and incremental Power BI refresh.
+- Deploy batch scoring as a secure REST API or scheduled job.
+- Add model calibration plots and financial threshold optimisation.
+- Monitor data drift, probability drift, precision, recall, and business intervention outcomes.
+- Add explainability with SHAP or permutation importance.
+- Build revenue and demand forecasting.
+- Add customer lifetime value and repeat-customer segmentation.
+- Add row-level security for management, sales, and marketing teams.
+- Use a cloud warehouse and orchestration service for production-scale refreshes.
 
+---
+
+## Technology Stack
+
+| Technology | Use |
+|---|---|
+| Python | Data acquisition, ETL, validation, feature engineering, model training, and scoring |
+| Pandas and NumPy | Data transformation and analytical calculations |
+| scikit-learn | Preprocessing, model training, tuning, and evaluation |
+| SQL | Relational schema design and reusable analytical structure |
+| Power BI | Data modelling, DAX, filtering, visual analytics, and management reporting |
+| Power Query | Source loading, transformation, and refresh |
+| Excel | Formula validation, supporting analysis, and management reporting |
+| Joblib | Saved preprocessing and machine-learning pipeline |
+| Git and GitHub | Version control, documentation, and portfolio delivery |
+
+## References
+
+- Antonio, N., de Almeida, A., and Nunes, L. (2019). [Hotel booking demand datasets](https://doi.org/10.1016/j.dib.2018.11.126), *Data in Brief*, 22, 41–49.
+- [Hotel Booking Demand dataset on Kaggle](https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand)
+- [Malaysia Monthly Arrivals by State of Entry — data.gov.my](https://data.gov.my/data-catalogue/arrivals_soe)
+- [Power BI documentation](https://learn.microsoft.com/power-bi/)
+- [scikit-learn documentation](https://scikit-learn.org/stable/)
 
 ## Licence
 
-This project is shared for educational and portfolio purposes. If you include a public dataset, review and follow the dataset owner's licence and attribution requirements before redistributing the data.
+The original code and documentation in this repository may be shared for educational and portfolio purposes. Third-party datasets remain subject to their original licences and attribution requirements. Review those terms before redistributing raw source files.
