@@ -1,0 +1,101 @@
+campaign_id,date_key,campaign_month,campaign_name,channel,target_segment,sent,delivered,opened,clicks,leads,bookings,spend_myr,attributed_revenue_myr,data_type
+C0001,20160101,2016-01-01,WhatsApp API Jan 2016 Demand Push,WhatsApp API,General Market,10913,10549,7371,1262,228,31,9631.23,138985.99,SYNTHETIC - portfolio demonstration only
+C0002,20160101,2016-01-01,Email Jan 2016 Demand Push,Email,Families,17480,16748,6062,723,181,27,5904.17,95316.55,SYNTHETIC - portfolio demonstration only
+C0003,20160101,2016-01-01,Google Search Jan 2016 Demand Push,Google Search,Repeat Customers,10958,10819,9109,1634,484,81,76709.67,414079.62,SYNTHETIC - portfolio demonstration only
+C0004,20160101,2016-01-01,Facebook/Instagram Jan 2016 Demand Push,Facebook/Instagram,General Market,20031,19774,11336,1069,265,36,39956.86,159634.31,SYNTHETIC - portfolio demonstration only
+C0005,20160101,2016-01-01,Affiliate Jan 2016 Demand Push,Affiliate,Young Professionals,15895,15712,11868,1822,506,93,35500.93,267907.71,SYNTHETIC - portfolio demonstration only
+C0006,20160201,2016-02-01,WhatsApp API Feb 2016 Demand Push,WhatsApp API,Young Professionals,43433,42535,28216,4593,1021,167,46053.01,709330.25,SYNTHETIC - portfolio demonstration only
+C0007,20160201,2016-02-01,Email Feb 2016 Demand Push,Email,Families,40431,39037,13554,1593,351,43,9253.91,153800.14,SYNTHETIC - portfolio demonstration only
+C0008,20160201,2016-02-01,Google Search Feb 2016 Demand Push,Google Search,Families,18220,18220,14546,2787,742,129,89934.5,529435.99,SYNTHETIC - portfolio demonstration only
+C0009,20160201,2016-02-01,Facebook/Instagram Feb 2016 Demand Push,Facebook/Instagram,Repeat Customers,19709,19636,10824,914,235,29,38041.55,138046.07,SYNTHETIC - portfolio demonstration only
+C0010,20160201,2016-02-01,Affiliate Feb 2016 Demand Push,Affiliate,Families,40121,40079,29801,4419,1199,243,151166.48,1018884.57,SYNTHETIC - portfolio demonstration only
+C0011,20160301,2016-03-01,WhatsApp API Mar 2016 Demand Push,WhatsApp API,General Market,36288,35188,23608,3669,719,121,21617.03,324741.66,SYNTHETIC - portfolio demonstration only
+C0012,20160301,2016-03-01,Email Mar 2016 Demand Push,Email,Families,54554,52839,18844,2050,495,63,13915.51,206982.58,SYNTHETIC - portfolio demonstration only
+C0013,20160301,2016-03-01,Google Search Mar 2016 Demand Push,Google Search,Families,33642,33205,27559,4661,1363,277,209886.81,1256542.0,SYNTHETIC - portfolio demonstration only
+C0014,20160301,2016-03-01,Facebook/Instagram Mar 2016 Demand Push,Facebook/Instagram,Young Professionals,49320,48745,26139,2246,576,56,40418.53,174600.71,SYNTHETIC - portfolio demonstration only
+C0015,20160301,2016-03-01,Affiliate Mar 2016 Demand Push,Affiliate,Families,40817,40140,29775,3979,1132,226,131376.1,893218.42,SYNTHETIC - portfolio demonstration only
+C0016,20160401,2016-04-01,WhatsApp API Apr 2016 Demand Push,WhatsApp API,Families,48456,47314,32433,5718,1353,225,43918.12,564797.0,SYNTHETIC - portfolio demonstration only
+C0017,20160401,2016-04-01,Email Apr 2016 Demand Push,Email,Families,54872,52544,17352,1622,426,53,17019.17,269010.91,SYNTHETIC - portfolio demonstration only
+C0018,20160401,2016-04-01,Google Search Apr 2016 Demand Push,Google Search,General Market,42160,42160,36675,7883,2430,394,251284.57,1426464.47,SYNTHETIC - portfolio demonstration only
+C0019,20160401,2016-04-01,Facebook/Instagram Apr 2016 Demand Push,Facebook/Instagram,Young Professionals,61116,60301,32845,2900,757,100,71254.09,262074.73,SYNTHETIC - portfolio demonstration only
+C0020,20160401,2016-04-01,Affiliate Apr 2016 Demand Push,Affiliate,Families,36262,35939,26546,4279,1209,263,216721.03,1301333.35,SYNTHETIC - portfolio demonstration only
+C0021,20160501,2016-05-01,WhatsApp API May 2016 Demand Push,WhatsApp API,Families,32150,31159,22846,3430,812,116,37393.25,586808.99,SYNTHETIC - portfolio demonstration only
+C0022,20160501,2016-05-01,Email May 2016 Demand Push,Email,Repeat Customers,46697,45047,14578,1681,404,43,12116.64,222616.45,SYNTHETIC - portfolio demonstration only
+C0023,20160501,2016-05-01,Google Search May 2016 Demand Push,Google Search,Repeat Customers,26658,26558,21698,3980,1297,238,159871.92,996026.14,SYNTHETIC - portfolio demonstration only
+C0024,20160501,2016-05-01,Facebook/Instagram May 2016 Demand Push,Facebook/Instagram,Families,56677,56677,31998,2409,512,81,92507.19,380160.38,SYNTHETIC - portfolio demonstration only
+C0025,20160501,2016-05-01,Affiliate May 2016 Demand Push,Affiliate,Families,51410,51410,36620,4733,1386,267,144038.43,988493.69,SYNTHETIC - portfolio demonstration only
+C0026,20160601,2016-06-01,WhatsApp API Jun 2016 Demand Push,WhatsApp API,Families,53307,52574,35869,6016,1076,171,57187.95,732356.63,SYNTHETIC - portfolio demonstration only
+C0027,20160601,2016-06-01,Email Jun 2016 Demand Push,Email,Families,35511,34173,12401,1166,292,35,5385.29,108599.61,SYNTHETIC - portfolio demonstration only
+C0028,20160601,2016-06-01,Google Search Jun 2016 Demand Push,Google Search,Repeat Customers,38654,38654,31546,5414,1599,294,252067.19,1205966.05,SYNTHETIC - portfolio demonstration only
+C0029,20160601,2016-06-01,Facebook/Instagram Jun 2016 Demand Push,Facebook/Instagram,Families,46048,45671,28450,3201,713,89,82154.69,320590.89,SYNTHETIC - portfolio demonstration only
+C0030,20160601,2016-06-01,Affiliate Jun 2016 Demand Push,Affiliate,Families,50301,50301,36305,4797,1137,224,137300.6,900042.63,SYNTHETIC - portfolio demonstration only
+C0031,20160701,2016-07-01,WhatsApp API Jul 2016 Demand Push,WhatsApp API,Young Professionals,20511,20182,13676,1899,362,71,15861.54,206609.08,SYNTHETIC - portfolio demonstration only
+C0032,20160701,2016-07-01,Email Jul 2016 Demand Push,Email,General Market,40679,40200,12490,1318,338,54,9677.86,169074.22,SYNTHETIC - portfolio demonstration only
+C0033,20160701,2016-07-01,Google Search Jul 2016 Demand Push,Google Search,General Market,42757,42691,34605,6173,1682,295,123473.6,698024.94,SYNTHETIC - portfolio demonstration only
+C0034,20160701,2016-07-01,Facebook/Instagram Jul 2016 Demand Push,Facebook/Instagram,Families,40403,40151,23501,2158,533,69,86782.32,332926.02,SYNTHETIC - portfolio demonstration only
+C0035,20160701,2016-07-01,Affiliate Jul 2016 Demand Push,Affiliate,Families,32177,31991,25347,4027,1158,215,98897.95,713981.12,SYNTHETIC - portfolio demonstration only
+C0036,20160801,2016-08-01,WhatsApp API Aug 2016 Demand Push,WhatsApp API,Families,44497,43808,30077,4985,922,162,61154.96,795089.43,SYNTHETIC - portfolio demonstration only
+C0037,20160801,2016-08-01,Email Aug 2016 Demand Push,Email,General Market,27604,26696,9111,970,240,30,5301.63,112280.06,SYNTHETIC - portfolio demonstration only
+C0038,20160801,2016-08-01,Google Search Aug 2016 Demand Push,Google Search,Young Professionals,42732,42437,34985,6421,1878,278,144469.63,959285.73,SYNTHETIC - portfolio demonstration only
+C0039,20160801,2016-08-01,Facebook/Instagram Aug 2016 Demand Push,Facebook/Instagram,Young Professionals,28121,28034,15468,1380,302,37,41552.61,186723.23,SYNTHETIC - portfolio demonstration only
+C0040,20160801,2016-08-01,Affiliate Aug 2016 Demand Push,Affiliate,Young Professionals,43335,43335,32543,5237,1512,324,174408.13,1230606.05,SYNTHETIC - portfolio demonstration only
+C0041,20160901,2016-09-01,WhatsApp API Sep 2016 Demand Push,WhatsApp API,Young Professionals,21222,20859,13569,2298,496,89,12102.02,221190.56,SYNTHETIC - portfolio demonstration only
+C0042,20160901,2016-09-01,Email Sep 2016 Demand Push,Email,Families,36905,35149,11891,1140,273,42,11583.2,191010.64,SYNTHETIC - portfolio demonstration only
+C0043,20160901,2016-09-01,Google Search Sep 2016 Demand Push,Google Search,General Market,47722,47495,37501,6448,1974,396,389003.29,1551247.45,SYNTHETIC - portfolio demonstration only
+C0044,20160901,2016-09-01,Facebook/Instagram Sep 2016 Demand Push,Facebook/Instagram,Repeat Customers,39944,39567,22566,2468,490,58,43620.05,148433.64,SYNTHETIC - portfolio demonstration only
+C0045,20160901,2016-09-01,Affiliate Sep 2016 Demand Push,Affiliate,Families,41238,41153,31324,4170,1235,270,183645.39,1321676.9,SYNTHETIC - portfolio demonstration only
+C0046,20161001,2016-10-01,WhatsApp API Oct 2016 Demand Push,WhatsApp API,Young Professionals,45156,43715,29564,4676,1064,189,44947.03,664091.59,SYNTHETIC - portfolio demonstration only
+C0047,20161001,2016-10-01,Email Oct 2016 Demand Push,Email,Repeat Customers,26853,25753,8226,924,246,32,8317.94,165116.63,SYNTHETIC - portfolio demonstration only
+C0048,20161001,2016-10-01,Google Search Oct 2016 Demand Push,Google Search,General Market,52810,52780,46350,8228,2138,446,340895.42,1899196.94,SYNTHETIC - portfolio demonstration only
+C0049,20161001,2016-10-01,Facebook/Instagram Oct 2016 Demand Push,Facebook/Instagram,Young Professionals,25689,25102,13271,939,210,28,31975.43,138749.12,SYNTHETIC - portfolio demonstration only
+C0050,20161001,2016-10-01,Affiliate Oct 2016 Demand Push,Affiliate,Families,41919,40934,30346,4076,1178,250,201646.21,1299328.55,SYNTHETIC - portfolio demonstration only
+C0051,20161101,2016-11-01,WhatsApp API Nov 2016 Demand Push,WhatsApp API,Repeat Customers,20461,20073,13764,2289,471,73,20071.2,330712.18,SYNTHETIC - portfolio demonstration only
+C0052,20161101,2016-11-01,Email Nov 2016 Demand Push,Email,General Market,17142,16613,5538,601,160,15,4667.15,69066.68,SYNTHETIC - portfolio demonstration only
+C0053,20161101,2016-11-01,Google Search Nov 2016 Demand Push,Google Search,General Market,24578,24321,20398,3601,1094,218,188406.59,1027639.06,SYNTHETIC - portfolio demonstration only
+C0054,20161101,2016-11-01,Facebook/Instagram Nov 2016 Demand Push,Facebook/Instagram,Families,19841,19627,11655,1061,236,28,32861.32,123308.17,SYNTHETIC - portfolio demonstration only
+C0055,20161101,2016-11-01,Affiliate Nov 2016 Demand Push,Affiliate,Young Professionals,17175,17175,13448,1659,477,86,29046.4,200126.44,SYNTHETIC - portfolio demonstration only
+C0056,20161201,2016-12-01,WhatsApp API Dec 2016 Demand Push,WhatsApp API,Repeat Customers,26954,26480,17605,2704,537,79,24532.26,359627.18,SYNTHETIC - portfolio demonstration only
+C0057,20161201,2016-12-01,Email Dec 2016 Demand Push,Email,Repeat Customers,37334,36135,13478,1427,314,46,9349.21,190794.18,SYNTHETIC - portfolio demonstration only
+C0058,20161201,2016-12-01,Google Search Dec 2016 Demand Push,Google Search,Families,19401,19283,15980,3250,1110,201,98204.23,609879.55,SYNTHETIC - portfolio demonstration only
+C0059,20161201,2016-12-01,Facebook/Instagram Dec 2016 Demand Push,Facebook/Instagram,Young Professionals,30862,30635,17135,1606,358,36,39247.57,142737.07,SYNTHETIC - portfolio demonstration only
+C0060,20161201,2016-12-01,Affiliate Dec 2016 Demand Push,Affiliate,Families,38533,38249,30156,4622,1205,248,157945.33,1067889.62,SYNTHETIC - portfolio demonstration only
+C0061,20170101,2017-01-01,WhatsApp API Jan 2017 Demand Push,WhatsApp API,Repeat Customers,30497,29885,20068,3467,683,109,23227.21,357734.95,SYNTHETIC - portfolio demonstration only
+C0062,20170101,2017-01-01,Email Jan 2017 Demand Push,Email,Repeat Customers,36106,34868,12361,1351,333,38,7391.23,119447.38,SYNTHETIC - portfolio demonstration only
+C0063,20170101,2017-01-01,Google Search Jan 2017 Demand Push,Google Search,Young Professionals,25344,25341,21201,4092,1257,219,132418.23,701323.44,SYNTHETIC - portfolio demonstration only
+C0064,20170101,2017-01-01,Facebook/Instagram Jan 2017 Demand Push,Facebook/Instagram,Young Professionals,34141,33299,18368,1214,255,39,27042.58,103772.71,SYNTHETIC - portfolio demonstration only
+C0065,20170101,2017-01-01,Affiliate Jan 2017 Demand Push,Affiliate,Families,32560,31624,22972,3883,1121,212,158865.8,903754.97,SYNTHETIC - portfolio demonstration only
+C0066,20170201,2017-02-01,WhatsApp API Feb 2017 Demand Push,WhatsApp API,Young Professionals,41015,40022,27128,4597,1043,179,29061.75,482891.99,SYNTHETIC - portfolio demonstration only
+C0067,20170201,2017-02-01,Email Feb 2017 Demand Push,Email,General Market,46029,44060,14002,1764,434,67,10703.69,226307.12,SYNTHETIC - portfolio demonstration only
+C0068,20170201,2017-02-01,Google Search Feb 2017 Demand Push,Google Search,General Market,43483,43355,37247,6542,1839,316,165120.56,737527.34,SYNTHETIC - portfolio demonstration only
+C0069,20170201,2017-02-01,Facebook/Instagram Feb 2017 Demand Push,Facebook/Instagram,Young Professionals,24215,23868,14050,860,192,19,20783.4,89884.54,SYNTHETIC - portfolio demonstration only
+C0070,20170201,2017-02-01,Affiliate Feb 2017 Demand Push,Affiliate,Repeat Customers,35113,34866,25662,3655,949,201,88249.51,646289.26,SYNTHETIC - portfolio demonstration only
+C0071,20170301,2017-03-01,WhatsApp API Mar 2017 Demand Push,WhatsApp API,Young Professionals,34244,33469,24461,3888,831,121,45051.08,574849.57,SYNTHETIC - portfolio demonstration only
+C0072,20170301,2017-03-01,Email Mar 2017 Demand Push,Email,Young Professionals,43355,41659,13238,1444,370,48,6576.33,131160.95,SYNTHETIC - portfolio demonstration only
+C0073,20170301,2017-03-01,Google Search Mar 2017 Demand Push,Google Search,Families,33715,33503,26925,5023,1525,234,91651.67,519934.75,SYNTHETIC - portfolio demonstration only
+C0074,20170301,2017-03-01,Facebook/Instagram Mar 2017 Demand Push,Facebook/Instagram,Repeat Customers,28426,28184,14757,1564,414,51,83877.94,250409.16,SYNTHETIC - portfolio demonstration only
+C0075,20170301,2017-03-01,Affiliate Mar 2017 Demand Push,Affiliate,General Market,32567,32327,23055,3425,1095,195,104555.3,752565.72,SYNTHETIC - portfolio demonstration only
+C0076,20170401,2017-04-01,WhatsApp API Apr 2017 Demand Push,WhatsApp API,General Market,41928,40469,27770,5050,944,129,41572.51,584631.79,SYNTHETIC - portfolio demonstration only
+C0077,20170401,2017-04-01,Email Apr 2017 Demand Push,Email,General Market,60540,58538,17305,2010,479,73,16977.3,282246.11,SYNTHETIC - portfolio demonstration only
+C0078,20170401,2017-04-01,Google Search Apr 2017 Demand Push,Google Search,General Market,35805,35805,29761,4754,1477,238,220546.99,1005768.22,SYNTHETIC - portfolio demonstration only
+C0079,20170401,2017-04-01,Facebook/Instagram Apr 2017 Demand Push,Facebook/Instagram,General Market,51684,50833,26836,2645,647,76,77677.12,308992.69,SYNTHETIC - portfolio demonstration only
+C0080,20170401,2017-04-01,Affiliate Apr 2017 Demand Push,Affiliate,Families,43021,42898,31079,4526,1218,234,161000.17,986272.19,SYNTHETIC - portfolio demonstration only
+C0081,20170501,2017-05-01,WhatsApp API May 2017 Demand Push,WhatsApp API,General Market,44818,44275,32928,5108,925,142,29299.46,429475.47,SYNTHETIC - portfolio demonstration only
+C0082,20170501,2017-05-01,Email May 2017 Demand Push,Email,Families,64448,62491,22066,2031,536,89,15918.17,274928.67,SYNTHETIC - portfolio demonstration only
+C0083,20170501,2017-05-01,Google Search May 2017 Demand Push,Google Search,Families,50000,49996,38833,7066,2064,440,173518.86,1145364.33,SYNTHETIC - portfolio demonstration only
+C0084,20170501,2017-05-01,Facebook/Instagram May 2017 Demand Push,Facebook/Instagram,Families,30350,30189,17146,1364,332,50,51701.32,173057.27,SYNTHETIC - portfolio demonstration only
+C0085,20170501,2017-05-01,Affiliate May 2017 Demand Push,Affiliate,General Market,68624,67785,49580,6892,1694,289,217036.63,1423959.19,SYNTHETIC - portfolio demonstration only
+C0086,20170601,2017-06-01,WhatsApp API Jun 2017 Demand Push,WhatsApp API,Repeat Customers,58704,57604,39562,5991,1160,203,28061.21,541263.91,SYNTHETIC - portfolio demonstration only
+C0087,20170601,2017-06-01,Email Jun 2017 Demand Push,Email,Repeat Customers,24812,24020,8066,966,253,38,9408.48,160504.11,SYNTHETIC - portfolio demonstration only
+C0088,20170601,2017-06-01,Google Search Jun 2017 Demand Push,Google Search,Families,39849,39849,34168,5962,1737,322,183842.38,1126651.43,SYNTHETIC - portfolio demonstration only
+C0089,20170601,2017-06-01,Facebook/Instagram Jun 2017 Demand Push,Facebook/Instagram,General Market,57017,56069,30301,1883,415,47,37002.9,176168.38,SYNTHETIC - portfolio demonstration only
+C0090,20170601,2017-06-01,Affiliate Jun 2017 Demand Push,Affiliate,Families,24331,24008,17731,2705,704,129,58806.43,400701.7,SYNTHETIC - portfolio demonstration only
+C0091,20170701,2017-07-01,WhatsApp API Jul 2017 Demand Push,WhatsApp API,Young Professionals,27460,26770,18673,2755,605,94,28298.62,344839.57,SYNTHETIC - portfolio demonstration only
+C0092,20170701,2017-07-01,Email Jul 2017 Demand Push,Email,Young Professionals,33290,32031,10071,1096,298,26,5911.91,94629.35,SYNTHETIC - portfolio demonstration only
+C0093,20170701,2017-07-01,Google Search Jul 2017 Demand Push,Google Search,Families,30798,30713,25773,4286,1189,223,100859.23,591253.73,SYNTHETIC - portfolio demonstration only
+C0094,20170701,2017-07-01,Facebook/Instagram Jul 2017 Demand Push,Facebook/Instagram,Families,30332,30096,16972,1685,431,43,37110.25,174599.26,SYNTHETIC - portfolio demonstration only
+C0095,20170701,2017-07-01,Affiliate Jul 2017 Demand Push,Affiliate,Repeat Customers,22861,22560,15645,2208,659,153,61500.32,411299.26,SYNTHETIC - portfolio demonstration only
+C0096,20170801,2017-08-01,WhatsApp API Aug 2017 Demand Push,WhatsApp API,General Market,46199,45048,30295,4478,1168,224,55143.63,735752.24,SYNTHETIC - portfolio demonstration only
+C0097,20170801,2017-08-01,Email Aug 2017 Demand Push,Email,Young Professionals,21911,21256,7462,932,244,34,4417.52,82767.06,SYNTHETIC - portfolio demonstration only
+C0098,20170801,2017-08-01,Google Search Aug 2017 Demand Push,Google Search,Young Professionals,38762,38594,31110,5122,1708,360,200147.7,1134525.42,SYNTHETIC - portfolio demonstration only
+C0099,20170801,2017-08-01,Facebook/Instagram Aug 2017 Demand Push,Facebook/Instagram,Repeat Customers,21895,21678,12249,941,233,30,37195.11,155259.7,SYNTHETIC - portfolio demonstration only
+C0100,20170801,2017-08-01,Affiliate Aug 2017 Demand Push,Affiliate,Families,44162,44162,33667,4718,1344,269,168207.83,1024513.73,SYNTHETIC - portfolio demonstration only
