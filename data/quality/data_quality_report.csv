@@ -1,0 +1,11 @@
+quality_check,row_count,action,rationale
+Source rows,119390,Information,All rows retained
+Fully duplicated signatures,40165,Review,"Retained: no natural booking key exists, so identical rows may be separate bookings"
+Missing country,488,Imputed,Filled as UNK
+Missing children,4,Imputed,Filled with 0 and flagged
+Invalid negative/missing ADR,1,Corrected,Clipped to 0 and flagged
+Zero-guest bookings,180,Excluded from ML,Retained in fact table with quality flag
+Invalid arrival dates,0,Excluded from ML,Retained in fact table with quality flag
+Arrival source rows,92674,Information,All rows retained
+Missing/invalid arrival dates,0,Flagged,Do not use for time analysis
+Gender reconciliation exceptions,0,Review,arrivals should equal male + female
